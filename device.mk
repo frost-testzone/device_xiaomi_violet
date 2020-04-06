@@ -12,6 +12,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# AID/fs configs
+PRODUCT_PACKAGES += \
+    fs_config_files
+
 # Camera
 $(call soong_config_set,camera,override_format_from_reserved,true)
 
