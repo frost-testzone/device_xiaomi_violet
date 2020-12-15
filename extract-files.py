@@ -21,10 +21,8 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/lib64/libvidhance.so', 'vendor/lib64/camera/components/com.vidhance.node.eis.so'): blob_fixup()
         .add_needed('libc++demangle.so')
         .add_needed('libcomparetf2_shim.so'),
-    'vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so': blob_fixup()
+    ('vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so', 'vendor/lib64/hw/camera.qcom.so'): blob_fixup()
         .add_needed('libcomparetf2_shim.so'),
-    'vendor/lib64/hw/camera.qcom.so': blob_fixup()
-        .binary_regex_replace(b'libc\+\+.so', b'libc29.so'),
     ('vendor/bin/mlipayd@1.1', 'vendor/lib64/libmlipay.so', 'vendor/lib64/libmlipay@1.1.so'): blob_fixup()
         .remove_needed('vendor.xiaomi.hardware.mtdservice@1.0.so'),
     ('system_ext/lib64/libwfdnative.so', 'system_ext/lib/libwfdnative.so', 'vendor/lib64/libgoodixhwfingerprint.so'): blob_fixup()
