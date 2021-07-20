@@ -19,6 +19,34 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Audio
+PRODUCT_PACKAGES += \
+    android.hardware.audio@6.0-impl \
+    android.hardware.audio.effect@6.0-impl \
+    android.hardware.audio.service \
+    android.hardware.bluetooth.audio-impl \
+    android.hardware.soundtrigger@2.3-impl
+
+PRODUCT_PACKAGES += \
+    audio.bluetooth.default \
+    audio.primary.sm6150 \
+    audio.usb.default \
+    audio.r_submix.default
+
+PRODUCT_PACKAGES += \
+    liba2dpoffload \
+    libhdmiedid \
+    libhfp \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libsndmonitor \
+    libspkrprot \
+    libvolumelistener
+
+PRODUCT_PACKAGES += \
+    libaudio-resampler
+
 # Camera
 $(call soong_config_set,camera,override_format_from_reserved,true)
 
