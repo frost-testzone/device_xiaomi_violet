@@ -261,6 +261,10 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
+    android.hardware.media.c2@1.0 \
+    android.hardware.media.c2@1.0.vendor \
+    libcodec2_vndk.vendor \
+    libcodec2_hidl@1.0.vendor \
     libc2dcolorconvert
 
 PRODUCT_COPY_FILES += \
