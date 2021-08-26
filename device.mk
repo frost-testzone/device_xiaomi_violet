@@ -42,7 +42,8 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing \
     libsndmonitor \
     libspkrprot \
-    libvolumelistener
+    libvolumelistener \
+    sound_trigger.primary.sm6150:32
 
 PRODUCT_PACKAGES += \
     libaudio-resampler
