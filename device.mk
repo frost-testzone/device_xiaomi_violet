@@ -292,6 +292,8 @@ PRODUCT_COPY_FILES += \
 # Network
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.1.vendor \
+    libloc_net_iface \
+    libloc_net_iface.vendor \
     libnetutils.vendor
 
 # Overlays
