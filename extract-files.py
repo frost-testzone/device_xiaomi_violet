@@ -26,7 +26,12 @@ namespace_imports = [
 ]
 
 blob_fixups: blob_fixups_user_type = {
-    ('vendor/lib64/hw/camera.qcom.so', 'vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so'): blob_fixup()
+    'vendor/lib64/hw/camera.qcom.so': blob_fixup()
+        .add_needed('libcomparetf2_shim.so')
+        .binary_regex_replace(b'libmegface.so', b'libfacedet.so')
+        .binary_regex_replace(b'libMegviiFacepp-0.5.2.so', b'libFaceDetectpp-0.5.2.so')
+        .binary_regex_replace(b'megviifacepp_0_5_2_model', b'facedetectpp_0_5_2_model'),
+    'vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so': blob_fixup()
         .add_needed('libcomparetf2_shim.so'),
     ('vendor/lib64/libvidhance.so', 'vendor/lib64/camera/components/com.vidhance.node.eis.so'): blob_fixup()
         .add_needed('libcomparetf2_shim.so')
@@ -34,6 +39,10 @@ blob_fixups: blob_fixups_user_type = {
     'vendor/etc/camera/camxoverridesettings.txt': blob_fixup()
         .regex_replace('0x10080', '0')
         .regex_replace('0x1F', '0'),
+    ('vendor/lib64/libFaceDetectpp-0.5.2.so', 'vendor/lib64/libfacedet.so'): blob_fixup()
+        .binary_regex_replace(b'libmegface.so', b'libfacedet.so')
+        .binary_regex_replace(b'libMegviiFacepp-0.5.2.so', b'libFaceDetectpp-0.5.2.so')
+        .binary_regex_replace(b'megviifacepp_0_5_2_model', b'facedetectpp_0_5_2_model'),
     'vendor/lib64/libvendor.goodix.hardware.interfaces.biometrics.fingerprint@2.1.so': blob_fixup()
         .patchelf_version('0_8')
         .remove_needed('libhidlbase.so')
