@@ -132,4 +132,5 @@ ENABLE_VENDOR_RIL_SERVICE := true
 
 # SELinux
 TARGET_SEPOLICY_DIR := msmsteppe
+include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
