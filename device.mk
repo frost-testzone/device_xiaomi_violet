@@ -43,7 +43,6 @@ PRODUCT_PACKAGES += \
     libsndmonitor \
     libspkrprot \
     libtinycompress \
-    libtinycompress.vendor \
     libvolumelistener
 
 PRODUCT_COPY_FILES += \
@@ -59,17 +58,12 @@ PRODUCT_COPY_FILES += \
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService-Soong \
-    com.dsi.ant@1.0.vendor
+    AntHalService-Soong
 
 # Bluetooth
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
-    audio.bluetooth.default \
-    android.hardware.bluetooth@1.1.vendor \
-    vendor.qti.hardware.bluetooth_audio@2.1.vendor \
-    vendor.qti.hardware.btconfigstore@1.0.vendor \
-    vendor.qti.hardware.btconfigstore@2.0.vendor
+    audio.bluetooth.default
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2340
@@ -79,18 +73,9 @@ TARGET_SCREEN_WIDTH := 1080
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
-    libc29.vendor \
-    libc++.vendor \
     libc++demangle_vendor \
     libcomparetf2 \
-    libdng_sdk.vendor \
-    libgui.vendor \
-    libxml2 \
-    vendor.qti.hardware.camera.device@1.0.vendor
-
-PRODUCT_PACKAGES += \
-    libMegviiFacepp-0.5.2 \
-    libmegface
+    libxml2
 
 # CNE
 PRODUCT_PACKAGES += \
@@ -119,17 +104,8 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator-service \
     vendor.qti.hardware.memtrack-service
 
-# Display interfaces
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.display.composer@1.0.vendor \
-    vendor.qti.hardware.display.composer@2.0.vendor \
-    vendor.qti.hardware.display.mapper@2.0.vendor \
-    vendor.qti.hardware.display.mapper@3.0.vendor \
-    vendor.qti.hardware.display.mapper@4.0.vendor
-
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.4.vendor \
     android.hardware.drm-service.clearkey
 
 # Dynamic Partitions
@@ -162,20 +138,10 @@ PRODUCT_PACKAGES += \
 # Firmware
 $(call inherit-product, vendor/xiaomi-firmware/violet/firmware.mk)
 
-# Framework detect
-PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect.vendor \
-    libvndfwk_detect_jni.qti.vendor
-
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0.vendor
-
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl-qti \
     android.hardware.gnss@2.1-service-qti \
-    libavservices_minijail.vendor \
     libbatching \
     libgeofencing \
     libgnss
@@ -185,16 +151,13 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1.vendor \
     android.hardware.health-service.qti \
     android.hardware.health-service.qti_recovery
 
 # HIDL
 PRODUCT_PACKAGES += \
     libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor
+    libhwbinder
 
 # IFAA manager
 PRODUCT_PACKAGES += \
@@ -239,11 +202,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/uinput-fpc.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-fpc.kl \
     $(LOCAL_PATH)/configs/keylayout/uinput-goodix.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/uinput-goodix.kl
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.0.vendor \
-    android.hardware.keymaster@4.1.vendor
-
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light-service.xiaomi
@@ -281,18 +239,9 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_c2_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_c2_video.xml
 
-# Mlipay
-PRODUCT_PACKAGES += \
-    vendor.xiaomi.hardware.mlipay@1.1.vendor:64
-
 # Native Public Libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
-
-# Network
-PRODUCT_PACKAGES += \
-    android.system.net.netd@1.1.vendor \
-    libnetutils.vendor
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -356,11 +305,6 @@ PRODUCT_SHIPPING_API_LEVEL := 28
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# Protobuf
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat
-
 # QTI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
@@ -388,21 +332,12 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    android.hardware.radio.config@1.0.vendor \
     android.hardware.radio.config@1.1 \
-    android.hardware.radio@1.4.vendor \
-    android.hardware.radio@1.5.vendor \
     android.hardware.radio@1.5 \
-    android.hardware.radio.config@1.2.vendor \
-    android.system.net.netd@1.1.vendor \
     android.hardware.secure_element@1.1 \
     android.hardware.radio.deprecated@1.0 \
-    android.hardware.radio.deprecated@1.0.vendor \
-    libjson \
     libprotobuf-cpp-full \
-    librmnetctl \
-    libxml2 \
-    libsqlite.vendor
+    libxml2
 
 PRODUCT_COPY_FILES += \
     prebuilts/vndk/v29/arm/arch-arm-armv7-a-neon/shared/vndk-core/libprotobuf-cpp-full.so:$(TARGET_COPY_OUT_VENDOR)/lib/libprotobuf-cpp-full.so \
@@ -417,17 +352,9 @@ PRODUCT_USE_SCUDO := true
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
 
-# Secure element
-PRODUCT_PACKAGES += \
-    android.hardware.secure_element@1.0.vendor \
-    android.hardware.secure_element@1.1.vendor \
-    android.hardware.secure_element@1.2.vendor
-
 # Sensor
 PRODUCT_PACKAGES += \
-    libsensorndkbridge \
-    android.frameworks.sensorservice@1.0.vendor \
-    android.hardware.sensors@2.0.vendor
+    libsensorndkbridge
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -511,14 +438,7 @@ PRODUCT_COPY_FILES += \
 
 # WiFi Display
 PRODUCT_PACKAGES += \
-    libavservices_minijail_32 \
-    libdisplayconfig.qti \
-    vendor.display.config@2.0 \
-    libdisplayconfig.vendor \
-    libnl \
-    libqdMetaData \
-    libqdMetaData.system \
-    libqdMetaData.vendor
+    vendor.display.config@2.0
 
 # WiFi firmware symlinks
 PRODUCT_PACKAGES += \
