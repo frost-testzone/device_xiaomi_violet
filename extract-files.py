@@ -8,10 +8,70 @@ from extract_utils.fixups_blob import (
     blob_fixup,
     blob_fixups_user_type,
 )
+from extract_utils.fixups_lib import (
+    lib_fixup_remove,
+    lib_fixups,
+    lib_fixups_user_type,
+)
 from extract_utils.main import (
     ExtractUtils,
     ExtractUtilsModule,
 )
+
+namespace_imports = [
+    'device/xiaomi/violet',
+    'hardware/qcom-caf/sm8150',
+    'hardware/qcom-caf/wlan',
+    'hardware/xiaomi',
+    'vendor/qcom/opensource/commonsys/display',
+    'vendor/qcom/opensource/commonsys-intf/display',
+    'vendor/qcom/opensource/dataservices',
+    'vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um',
+    'vendor/qcom/opensource/display',
+    'vendor/qcom/opensource/usb/etc',
+]
+
+
+def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
+    return f'{lib}_{partition}' if partition == 'vendor' else None
+
+
+lib_fixups: lib_fixups_user_type = {
+    **lib_fixups,
+    (
+        'com.qualcomm.qti.dpm.api@1.0',
+        'com.qualcomm.qti.imscmservice@2.0',
+        'com.qualcomm.qti.imscmservice@2.1',
+        'com.qualcomm.qti.imscmservice@2.2',
+        'com.qualcomm.qti.uceservice@2.0',
+        'com.qualcomm.qti.uceservice@2.1',
+        'com.qualcomm.qti.uceservice@2.2',
+        'com.qualcomm.qti.uceservice@2.3',
+        'libmmosal',
+        'vendor.qti.hardware.data.cne.internal.api@1.0',
+        'vendor.qti.hardware.data.cne.internal.constants@1.0',
+        'vendor.qti.hardware.data.cne.internal.server@1.0',
+        'vendor.qti.hardware.data.connection@1.0',
+        'vendor.qti.hardware.data.connection@1.1',
+        'vendor.qti.hardware.data.dynamicdds@1.0',
+        'vendor.qti.hardware.data.iwlan@1.0',
+        'vendor.qti.hardware.data.qmi@1.0',
+        'vendor.qti.hardware.fm@1.0',
+        'vendor.qti.ims.callcapability@1.0',
+        'vendor.qti.ims.callinfo@1.0',
+        'vendor.qti.ims.factory@1.0',
+        'vendor.qti.ims.factory@1.1',
+        'vendor.qti.ims.rcsconfig@1.0',
+        'vendor.qti.ims.rcsconfig@1.1',
+        'vendor.qti.ims.rcsconfig@2.0',
+        'vendor.qti.ims.rcsconfig@2.1',
+        'vendor.qti.imsrtpservice@3.0',
+    ): lib_fixup_vendor_suffix,
+    (
+        'libOmxCore',
+        'libwpa_client',
+    ): lib_fixup_remove,
+}
 
 blob_fixups: blob_fixups_user_type = {
     ('system_ext/lib64/libwfdnative.so', 'system_ext/lib/libwfdnative.so', 'vendor/lib64/libgoodixhwfingerprint.so'): blob_fixup()
@@ -39,7 +99,8 @@ module = ExtractUtilsModule(
     'violet',
     'xiaomi',
     blob_fixups=blob_fixups,
-    check_elf=False,
+    lib_fixups=lib_fixups,
+    namespace_imports=namespace_imports,
 )
 
 if __name__ == '__main__':
