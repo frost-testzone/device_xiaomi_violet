@@ -19,6 +19,8 @@ if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
 ANDROID_ROOT="${MY_DIR}/../../.."
 
+export TARGET_ENABLE_CHECKELF=false
+
 HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
@@ -57,40 +59,57 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-    vendor/lib/libwvhidl.so | vendor/lib/mediadrm/libwvdrmengine.so | vendor/lib64/libwvhidl.so | vendor/lib64/mediadrm/libwvdrmengine.so)
+        vendor/lib/libwvhidl.so | vendor/lib/mediadrm/libwvdrmengine.so | vendor/lib64/libwvhidl.so | vendor/lib64/mediadrm/libwvdrmengine.so)
+            [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v34.so" "${2}"
             ;;
-    vendor/lib64/libvidhance.so|vendor/lib64/camera/components/com.vidhance.node.eis.so)
+        vendor/lib64/libvidhance.so|vendor/lib64/camera/components/com.vidhance.node.eis.so)
+            [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libc++demangle.so" "${2}"
             "${PATCHELF}" --add-needed "libcomparetf2.so" "${2}"
             ;;
-    vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so)
+        vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so)
+            [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libcomparetf2.so" "${2}"
             ;;
-    vendor/lib64/hw/camera.qcom.so)
+        vendor/lib64/hw/camera.qcom.so)
+            [ "$2" = "" ] && return 0
             sed -i "s|libc++.so|libc29.so|g" "${2}"
             ;;
-    vendor/bin/mlipayd@1.1 | vendor/lib64/libmlipay.so | vendor/lib64/libmlipay@1.1.so )
-        "${PATCHELF}" --remove-needed vendor.xiaomi.hardware.mtdservice@1.0.so "${2}"
-    ;;
-    system_ext/lib64/libwfdnative.so | system_ext/lib/libwfdnative.so | vendor/lib64/libgoodixhwfingerprint.so )
-        "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
-    ;;
-    vendor/etc/camera/camxoverridesettings.txt )
-        sed -i "s|0x10080|0|g" "${2}"
-        sed -i "s|0x1F|0x0|g" "${2}"
-    ;;
-    # Use VNDK 32 libhidlbase
-    vendor/lib64/libvendor.goodix.hardware.interfaces.biometrics.fingerprint@2.1.so)
-        "${PATCHELF_0_8}" --remove-needed "libhidlbase.so" "${2}"
-        sed -i "s/libhidltransport.so/libhidlbase-v32.so\x00/" "${2}"
-    ;;
-    vendor/lib/libstagefright_soft_ddpdec.so | vendor/lib/libstagefright_soft_ac4dec.so | \
-    vendor/lib/libstagefrightdolby.so | vendor/lib64/libstagefright_soft_ddpdec.so | \
-    vendor/lib64/libdlbdsservice.so | vendor/lib64/libstagefright_soft_ac4dec.so | vendor/lib64/libstagefrightdolby.so)
-        $PATCHELF_TOOL --replace-needed "libstagefright_foundation.so" "libstagefright_foundation-v33.so" "${2}"
-    ;;
+        vendor/bin/mlipayd@1.1 | vendor/lib64/libmlipay.so | vendor/lib64/libmlipay@1.1.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --remove-needed vendor.xiaomi.hardware.mtdservice@1.0.so "${2}"
+            ;;
+        system_ext/lib64/libwfdnative.so | system_ext/lib/libwfdnative.so | vendor/lib64/libgoodixhwfingerprint.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
+            ;;
+        vendor/etc/camera/camxoverridesettings.txt)
+            [ "$2" = "" ] && return 0
+            sed -i "s|0x10080|0|g" "${2}"
+            sed -i "s|0x1F|0x0|g" "${2}"
+            ;;
+        vendor/lib64/libvendor.goodix.hardware.interfaces.biometrics.fingerprint@2.1.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF_0_8}" --remove-needed "libhidlbase.so" "${2}"
+            sed -i "s/libhidltransport.so/libhidlbase-v32.so\x00/" "${2}"
+            ;;
+        vendor/lib/libstagefright_soft_ddpdec.so | vendor/lib/libstagefright_soft_ac4dec.so | \
+        vendor/lib/libstagefrightdolby.so | vendor/lib64/libstagefright_soft_ddpdec.so | \
+        vendor/lib64/libdlbdsservice.so | vendor/lib64/libstagefright_soft_ac4dec.so | vendor/lib64/libstagefrightdolby.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "libstagefright_foundation.so" "libstagefright_foundation-v33.so" "${2}"
+            ;;
+        *)
+            return 1
+            ;;
     esac
+
+    return 0
+}
+
+function blob_fixup_dry() {
+    blob_fixup "$1" ""
 }
 
 # Initialize the helper for common device
