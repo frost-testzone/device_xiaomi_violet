@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/derp_violet.mk
+    $(LOCAL_DIR)/voltage_violet.mk
 
 COMMON_LUNCH_CHOICES := \
-    derp_violet-eng \
-    derp_violet-userdebug \
-    derp_violet-user
+    voltage_violet-eng \
+    voltage_violet-userdebug \
+    voltage_violet-user
