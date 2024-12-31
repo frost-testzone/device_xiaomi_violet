@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Copyright (C) 2018-2020 The LineageOS Project
-#
+# SPDX-FileCopyrightText: 2016 The CyanogenMod Project
+# SPDX-FileCopyrightText: 2017-2024 The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
 
@@ -9,8 +9,6 @@ set -e
 
 DEVICE=violet
 VENDOR=xiaomi
-
-INITIAL_COPYRIGHT_YEAR=2019
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
