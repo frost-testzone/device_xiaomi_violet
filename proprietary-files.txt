@@ -524,10 +524,11 @@ vendor/lib/libwvhidl.so|dd599b1055d1faf025d60bc4f702f9ae11123c30
 vendor/lib64/liboemcrypto.so|2cee717b25559030a61709e826b4a5dae6043c20
 vendor/lib64/libwvhidl.so|a1eebbae3b2f6fbaf55d2c6d87dde86bb60fbff9
 
-# DSP HAL Service - from LA.UM.9.1.r1-12900-SMxxx0.0
+# DSP HAL Service - from LA.UM.9.1.r1-13700-SMxxx0.QSSI13.0
 vendor/bin/dspservice|a7344fc3d27a49df30858ebc3f73ee5818e752d4
 vendor/etc/init/vendor.qti.hardware.dsp@1.0-service.rc|fbf2bb38ca6bdddf98c7123da9e1f263a4eec55f
 vendor/etc/seccomp_policy/vendor.qti.hardware.dsp.policy|f060101b26d3674bb173e5fc95e118f56a8ac15d
+vendor/lib/vendor.qti.hardware.dsp@1.0.so|8fcb647d22144c0ce005eae37e05e786d2b045be
 vendor/lib64/vendor.qti.hardware.dsp@1.0.so|223a9268bd92bd80dab3df02fbef38ea86bcbadd
 
 # Fingerprint
@@ -854,7 +855,6 @@ vendor/lib64/libril-qc-hal-qmi.so|f6b18fbbc2cc16834b34aa7a18f4ff0b21826bdf
 vendor/lib64/libril-qc-logger.so|c3a3d02b10de4da0358ae497d3dbd2ce9c7e2a8e
 vendor/lib64/libril-qc-ltedirectdisc.so|6deb30e7d00bdde840dad2df382d4c7489567c79
 vendor/lib64/libril-qc-radioconfig.so|0baf2a37113680030ce3158c725e4eb1c31283ce
-vendor/lib64/libril-qcril-hook-oem.so|63a96306fddd3e16129a0ce26be8e82137960279
 vendor/lib64/librilqmiservices.so|ad3512fa14ca5231fed6926d48b94633cebb8adf
 vendor/lib64/libsettings.so|4e66d88cd28fab413b2830192bed7e5782eb1e02
 vendor/lib64/libsystem_health_mon.so|2cc55d78ea00b9fe8af9cd88fd8ef8c31ee5f494
@@ -896,9 +896,6 @@ vendor/radio/qcril_database/upgrade/6_version_update_ecc_table.sql|0fdf4b6ccb489
 vendor/radio/qcril_database/upgrade/7_version_update_ecc_table.sql|9a76d5747da2876b87b214579c9d74ae92d218d7
 vendor/radio/qcril_database/upgrade/8_version_update_ecc_table.sql|a0603a5c46e8e67f78bdb42f2b246ecc6a37cecd
 vendor/radio/qcril_database/upgrade/9_version_update_ecc_table.sql|4701219a79190995eda651e5c45e11c9b111a478
-
-# Telephony - from smali edit: https://gist.github.com/PIPIPIG233666/72806386c8b93729ce7f2b2c263d8889
-system_ext/framework/qti-telephony-common.jar|bb3ab85fcc841cb41e7f7c911eecf4de110d09b9
 
 # Radio (GNSS dependencies) - from LA.UM.9.1.r1-13700-SMxxx0.QSSI13.0
 vendor/lib64/qcrilHalMarshal.so|c1840ec37d26f37efc40f4b1380f8b613e8964c6
@@ -953,9 +950,13 @@ system_ext/lib64/vendor.qti.ims.factory@1.0.so|d5c51fd2d5f864aa85b1f6a76ebe0fef7
 system_ext/lib64/vendor.qti.ims.factory@1.1.so|b8bfb455e70d803b6bfb35378f70493f22beda75
 system_ext/lib64/vendor.qti.ims.factory@2.0.so|db4e50433f75566781c9f30b72648fab39b2cf1b
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.0.so|bd23bf20cc14360adac03b516044de8997feb61c
+system_ext/lib64/vendor.qti.ims.configservice@1.0.so|1982191bcc49f740fa7011d404b1c918962d41f5
+system_ext/lib64/vendor.qti.ims.connection@1.0.so|099fdcedb582989c91b0fab9751b63f2f16a8ad1
 system_ext/lib64/vendor.qti.ims.rcsconfig@1.1.so|854ed9a73c5a9bcc1ab31a53e03dbd19fd61c217
 system_ext/lib64/vendor.qti.ims.rcsconfig@2.0.so|b6c51c0816c6ea98a891ba8837aed61f12befe52
 system_ext/lib64/vendor.qti.ims.rcsconfig@2.1.so|6f60384c1c3747744f13c40a1be2ead761d33e1c
+system_ext/lib64/vendor.qti.ims.rcssip@1.0.so|6a97a0c1f9d6be332f5c3a338747a725bde86c12
+system_ext/lib64/vendor.qti.ims.rcsuce@1.0.so|00362eb7131ba884fc31e7a636ef1c96d808e2af
 system_ext/lib64/vendor.qti.imsrtpservice@3.0.so|919c4398097c8b818a415efccc57e989c7c24e10
 system_ext/lib64/vendor.qti.imsrtpservice@3.1.so|d1b6a6eabf17e43e98dcc4372fdabea4890f7cd8
 system_ext/priv-app/ims/ims.apk|a52f115f281d22025272791b7414775bb30feb4d
@@ -1029,9 +1030,6 @@ vendor/etc/sensors/hals.conf
 vendor/lib64/android.hardware.sensors@2.0-impl.so
 vendor/lib64/libsensorcal.so
 vendor/lib64/libsensorslog.so
-vendor/lib64/libsns_fastRPC_util.so
-vendor/lib64/libsns_low_lat_stream_stub.so
-vendor/lib64/libsnsdiaglog.so
 vendor/lib64/libssc.so
 vendor/lib64/libssc_default_listener.so
 vendor/lib64/sensors.ssc.so
@@ -1111,6 +1109,9 @@ vendor/bin/hw/vendor.qti.hardware.soter@1.0-service|8e315a85eeeb94a51f1533c80212
 vendor/etc/init/vendor.qti.hardware.soter@1.0-service.rc|76447a61ad5529949365eeb7e8ca000e48bd28ae
 vendor/lib64/hw/vendor.qti.hardware.soter@1.0-impl.so|c20b05b20874e6b7f14cd61346646c79c363f42f
 vendor/lib64/vendor.qti.hardware.soter@1.0.so|5496f7816036ef71aec0116864032f8a6078aee7
+
+# Telephony - from smali edit: https://gist.github.com/PIPIPIG233666/72806386c8b93729ce7f2b2c263d8889
+system_ext/framework/qti-telephony-common.jar|bb3ab85fcc841cb41e7f7c911eecf4de110d09b9
 
 # Thermal
 vendor/lib64/libthermalclient.so
