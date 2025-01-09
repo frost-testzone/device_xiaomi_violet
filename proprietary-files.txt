@@ -515,7 +515,9 @@ vendor/lib64/libhdcpsrm.so|b8a39941e5071790c31435fe1a0d03030c63fd78
 vendor/lib64/libmm-hdcpmgr.so|e6952d39c6f36ef73d5dc0dd348fa3c5e2f3bc1c
 
 # DRM - QSEECOMD - from LA.UM.9.1.r1-12900-SMxxx0.0
+vendor/lib/libops.so|5eca927746c0df471039522655181e1b7da081ec
 vendor/lib/libspl.so|ec1ae86b1727e33c87fd8c00ebe02d8734510745
+vendor/lib64/libops.so|a6556e34f327dab506012db83169b5c53e7f1b0a
 vendor/lib64/libspl.so|e2b3e2dd28b0eee567d72de696cd1e01288ae06f
 
 # DRM - Widevine -L1 - from DAVINCIGLOBAL
