@@ -60,6 +60,10 @@ PRODUCT_COPY_FILES += \
 # Camera
 $(call soong_config_set,camera,override_format_from_reserved,true)
 
+# Media
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/media,$(TARGET_COPY_OUT_VENDOR)/etc)
+
 # Partitions
 PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
