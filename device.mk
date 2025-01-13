@@ -208,10 +208,17 @@ PRODUCT_PACKAGES += \
     ims-ext-common \
     ims_ext_common.xml
 
-# Init scripts
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.violet.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.violet.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.xiaomi.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.xiaomi.rc
+# Init
+PRODUCT_PACKAGES += \
+    fstab.persist \
+    fstab.qcom \
+    fstab.qcom.ramdisk \
+    init.insmod.sh \
+    init.power.rc \
+    init.qcom.rc \
+    init.violet.rc \
+    init.xiaomi.rc \
+    ueventd.qcom.rc
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -363,25 +370,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
     $(LOCAL_PATH)/configs/qti_whitelist.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/qti_whitelist.xml
 
-# Ramdisk
-PRODUCT_PACKAGES += \
-    fstab.persist \
-    fstab.qcom_ramdisk \
-    fstab.qcom \
-    init.insmod.sh \
-    init.msm.usb.configfs.rc \
-    init.power.rc \
-    init.qcom.rc \
-    init.qcom.usb.rc \
-    init.qcom.usb.sh \
-    init.recovery.qcom.rc \
-    ueventd.qcom.rc
-
 # RCS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
     PresencePolling \
     RcsService
+
+# Recovery
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -476,6 +473,10 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.3-service.dual_role_usb \
     android.hardware.usb-service.qti \
     android.hardware.usb.gadget-service.qti
+
+PRODUCT_PACKAGES += \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh
 
 # Vibrator
 $(call inherit-product, vendor/qcom/opensource/vibrator/vibrator-vendor-product.mk)
