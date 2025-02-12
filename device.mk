@@ -352,11 +352,6 @@ PRODUCT_SHIPPING_API_LEVEL := 28
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# Protobuf
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-3.9.1-vendorcompat \
-    libprotobuf-cpp-lite-3.9.1-vendorcompat
-
 # QTI
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-qti.xml \
@@ -386,6 +381,7 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.deprecated@1.0.vendor \
     libjson \
     libprotobuf-cpp-full \
+    libprotobuf-cpp-full-3.9.1-vendorcompat \
     librmnetctl \
     libxml2 \
     libsqlite.vendor

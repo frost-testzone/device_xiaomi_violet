@@ -60,6 +60,10 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v34.so" "${2}"
             ;;
+        vendor/lib/mediadrm/libwvdrmengine.so | vendor/lib64/libwvhidl.so | vendor/lib64/mediadrm/libwvdrmengine.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite-3.9.1.so" "libprotobuf-cpp-full-3.9.1.so" "${2}"
+            ;;
         vendor/lib64/libvidhance.so|vendor/lib64/camera/components/com.vidhance.node.eis.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libc++demangle.so" "${2}"
