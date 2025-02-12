@@ -148,10 +148,6 @@ PRODUCT_COPY_FILES += \
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
-    
-# Fastcharge
-PRODUCT_PACKAGES += \
-    vendor.lineage.fastcharge@1.0-service.xiaomi_sm6150
 
 # Fingerprint feature
 PRODUCT_COPY_FILES += \
