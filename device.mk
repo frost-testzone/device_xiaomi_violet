@@ -84,7 +84,7 @@ PRODUCT_PACKAGES += \
     libc29.vendor \
     libc++.vendor \
     libc++demangle_vendor \
-    libcomparetf2 \
+    libcomparetf2_shim \
     libdng_sdk.vendor \
     libgui.vendor \
     libxml2 \

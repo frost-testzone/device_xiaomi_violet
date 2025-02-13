@@ -67,11 +67,11 @@ function blob_fixup() {
         vendor/lib64/libvidhance.so|vendor/lib64/camera/components/com.vidhance.node.eis.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libc++demangle.so" "${2}"
-            "${PATCHELF}" --add-needed "libcomparetf2.so" "${2}"
+            "${PATCHELF}" --add-needed "libcomparetf2_shim.so" "${2}"
             ;;
         vendor/lib64/camera/components/com.vidhance.stats.aec_dmbr.so)
             [ "$2" = "" ] && return 0
-            "${PATCHELF}" --add-needed "libcomparetf2.so" "${2}"
+            "${PATCHELF}" --add-needed "libcomparetf2_shim.so" "${2}"
             ;;
         vendor/lib64/hw/camera.qcom.so)
             [ "$2" = "" ] && return 0
