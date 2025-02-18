@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.capabilityconfigstore@1.0 \
     vendor.qti.hardware.capabilityconfigstore@1.0.vendor
 
+# DeviceAsWebcam
+PRODUCT_PACKAGES += \
+    DeviceAsWebcam
+
 # Device-specific settings
 PRODUCT_PACKAGES += \
     XiaomiParts
