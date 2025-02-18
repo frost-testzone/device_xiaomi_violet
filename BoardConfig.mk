@@ -113,27 +113,38 @@ TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 96
 
 # Kernel
 BOARD_BOOT_HEADER_VERSION := 1
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 service_locator.enable=1 swiotlb=1 earlycon=msm_geni_serial,0x880000 loop.max_part=7 kpti=off
-BOARD_KERNEL_CMDLINE +=  androidboot.vbmeta.avb_version=1.0
-BOARD_KERNEL_CMDLINE += androidboot.android_dt_dir=/non-existent androidboot.boot_devices=soc/7c4000.sdhci
-BOARD_KERNEL_CMDLINE += user_debug=31 androidboot.verifiedbootstate=green
-BOARD_KERNEL_CMDLINE += cgroup_disable=pressure
 BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_CMDLINE := \
+    androidboot.android_dt_dir=/non-existent \
+    androidboot.boot_devices=soc/7c4000.sdhci \
+    androidboot.hardware=qcom \
+    androidboot.console=ttyMSM0 \
+    androidboot.vbmeta.avb_version=1.0 \
+    androidboot.verifiedbootstate=green \
+    cgroup_disable=pressure \
+    service_locator.enable=1 \
+    earlycon=msm_geni_serial,0x880000 \
+    kpti=off \
+    loop.max_part=7 \
+    swiotlb=1 \
+    user_debug=31
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
-TARGET_KERNEL_ADDITIONAL_FLAGS := \
-    DTC_EXT=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/dtc/dtc \
-    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
-TARGET_KERNEL_SOURCE := kernel/xiaomi/violet
-TARGET_KERNEL_CONFIG := vendor/violet-perf_defconfig
-TARGET_KERNEL_CLANG_COMPILE := true
 BOARD_RAMDISK_OFFSET := 0x01000000
 
-KERNEL_CLANG_TRIPLE := CLANG_TRIPLE=aarch64-linux-gnu-
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    DTC_EXT=$(shell pwd)/prebuilts/misc/$(HOST_OS)-x86/dtc/dtc \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument" \
+    LLVM=1 \
+    LLVM_IAS=1
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CONFIG := vendor/violet-perf_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/violet
+
 KERNEL_CC := CC=clang
-TARGET_KERNEL_ADDITIONAL_FLAGS := LLVM=1 LLVM_IAS=1
+KERNEL_CLANG_TRIPLE := CLANG_TRIPLE=aarch64-linux-gnu-
 
 # Media
 TARGET_DISABLED_UBWC := true
