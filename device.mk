@@ -133,6 +133,10 @@ PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml
 
+# IR
+PRODUCT_PACKAGES += \
+    android.hardware.ir-service.lineage
+
 # Media
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/media,$(TARGET_COPY_OUT_VENDOR)/etc)
