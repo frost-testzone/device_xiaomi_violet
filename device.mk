@@ -63,8 +63,7 @@ $(call inherit-product, vendor/xiaomi/miuicamera-violet/MiuiCamera.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 # Power
 PRODUCT_COPY_FILES += \
