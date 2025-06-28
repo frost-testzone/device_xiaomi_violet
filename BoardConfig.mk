@@ -41,3 +41,25 @@ DEVICE_MATRIX_FILE := \
 
 ODM_MANIFEST_FILES += \
     $(DEVICE_PATH)/manifest-qva.xml
+
+# Kernel
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_IMAGE_NAME := Image.gz
+BOARD_KERNEL_PAGESIZE := 4096
+BOARD_KERNEL_SEPARATED_DTBO := true
+
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+
+BOARD_KERNEL_CMDLINE := \
+    console=ttyMSM0,115200n8 \
+    earlycon=msm_geni_serial,0x880000 \
+    androidboot.hardware=qcom \
+    androidboot.console=ttyMSM0 \
+    service_locator.enable=1 \
+    lpm_levels.sleep_disabled=1 \
+    loop.max_part=7
+
+TARGET_KERNEL_SOURCE := kernel/xiaomi/violet
+TARGET_KERNEL_CONFIG := violet_defconfig
