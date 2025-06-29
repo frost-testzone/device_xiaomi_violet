@@ -114,6 +114,15 @@ PRODUCT_PACKAGES += \
     libgeofencing \
     libgnss
 
+PRODUCT_PACKAGES += \
+    apdr.conf \
+    flp.conf \
+    gnss_antenna_info.conf \
+    gps.conf \
+    izat.conf \
+    lowi.conf \
+    sap.conf
+
 # Media
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/media,$(TARGET_COPY_OUT_VENDOR)/etc)
