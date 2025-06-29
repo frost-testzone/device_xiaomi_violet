@@ -1,0 +1,10 @@
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<config>
+    <overlay package="android.overlay.violet" mutable="false" enabled="true" />
+    <overlay package="com.android.settings.overlay.violet" mutable="false" enabled="true" />
+    <overlay package="com.android.systemui.overlay.violet" mutable="false" enabled="true" />
+    <overlay package="com.android.wifi.resources.overlay.violet" mutable="false" enabled="true" />
+</config>

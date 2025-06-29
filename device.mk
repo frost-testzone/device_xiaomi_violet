@@ -144,6 +144,15 @@ PRODUCT_COPY_FILES += \
 # Overlays
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
+PRODUCT_PACKAGES += \
+    FrameworkOverlayVIOLET \
+    SettingsOverlayVIOLET \
+    SystemUIOverlayVIOLET \
+    WifiOverlayVIOLET
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/overlay/config-vendor.xml:$(TARGET_COPY_OUT_VENDOR)/overlay/config/config.xml
+
 # Partitions
 PRODUCT_PACKAGES += \
     vendor_bt_firmware_mountpoint \
