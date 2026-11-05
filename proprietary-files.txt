@@ -1,4 +1,5 @@
 # These proprietary files are extracted from Redmi Note 7 Pro (codenamed `violet`) MIUI V12.5.4.0.QFHCNXM, unless pinned
+# thor: thor-user 15 AQ3A.250226.002 OS3.0.6.0.VLACNXM release-keys
 
 # ACDB
 vendor/etc/acdbdata/IDP/IDP_Bluetooth_cal.acdb
@@ -221,7 +222,6 @@ vendor/lib64/hw/camera.qcom.so
 vendor/lib64/hw/com.qti.chi.override.so
 vendor/lib64/hw/com.qti.chi.override_moorea.so
 vendor/lib64/libFaceGrade.so
-vendor/lib64/libSNPE.so
 vendor/lib64/libVDSuperPhotoAPI.so
 vendor/lib64/libXMFD_AgeGender.so
 vendor/lib64/libarcsoft_beautyshot.so
@@ -249,6 +249,9 @@ vendor/lib64/libsymphony-cpu.so
 vendor/lib64/libsymphonypower.so
 vendor/lib64/libvidhance.so
 vendor/lib64/mibokeh_660_opencl.bin
+
+# Camera - from thor
+vendor/lib64/libSNPE.so|36fdd9aef0149520f665ff9947a7a2b872a512d5
 
 # Camera Firmware
 vendor/firmware/CAMERA_ICP.elf
